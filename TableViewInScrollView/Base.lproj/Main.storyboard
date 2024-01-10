@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -113,15 +114,102 @@
                             <constraint firstItem="Ou8-rB-Epd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hyd-Pn-GIg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="TableView Inside ScrollView" id="pdU-J6-M0I"/>
+                    <navigationItem key="navigationItem" title="TableView Inside ScrollView" id="pdU-J6-M0I">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="xNr-N6-lgn">
+                            <connections>
+                                <action selector="nextButtonDidTap:" destination="BYZ-38-t0r" id="N2g-bA-PW8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="userInfoTableView" destination="UHX-xJ-IcK" id="oue-JL-yLY"/>
                         <outlet property="userInfoTableViewHeightConstraint" destination="yqr-9W-BX1" id="krt-up-VTS"/>
+                        <segue destination="8Jt-wa-h6U" kind="show" identifier="keyChainVC" id="8tC-4J-Aie"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="983.96946564885491" y="-2.1126760563380285"/>
+        </scene>
+        <!--Key Chain View Controller-->
+        <scene sceneID="iwb-6f-Psr">
+            <objects>
+                <viewController storyboardIdentifier="KeyChainViewController" id="8Jt-wa-h6U" customClass="KeyChainViewController" customModule="TableViewInScrollView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R8e-hG-ebO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL0-3b-ccv">
+                                <rect key="frame" x="20" y="307" width="353" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="dvu-BH-XfK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZS-QF-Dim">
+                                <rect key="frame" x="20" y="237" width="353" height="50"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hZM-Yy-or7"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save Value in KeyChain">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButtonDidTap:" destination="8Jt-wa-h6U" eventType="touchUpInside" id="hBz-bN-lEJ"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhR-ib-qWq">
+                                <rect key="frame" x="20" y="153" width="353" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHd-VV-YVZ">
+                                <rect key="frame" x="20" y="427" width="353" height="50"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PDB-m5-mX4"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete value from KeyChain">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteButtonDidTap:" destination="8Jt-wa-h6U" eventType="touchUpInside" id="lPT-qd-0Z3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IdR-nE-NA9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WHd-VV-YVZ" firstAttribute="leading" secondItem="IdR-nE-NA9" secondAttribute="leading" constant="20" id="1KZ-hv-dOb"/>
+                            <constraint firstItem="pL0-3b-ccv" firstAttribute="leading" secondItem="IdR-nE-NA9" secondAttribute="leading" constant="20" id="25V-Dg-HV6"/>
+                            <constraint firstItem="IdR-nE-NA9" firstAttribute="trailing" secondItem="8ZS-QF-Dim" secondAttribute="trailing" constant="20" id="8yI-QK-y0A"/>
+                            <constraint firstItem="8ZS-QF-Dim" firstAttribute="top" secondItem="WhR-ib-qWq" secondAttribute="bottom" constant="50" id="9YK-8p-lkd"/>
+                            <constraint firstItem="WhR-ib-qWq" firstAttribute="leading" secondItem="IdR-nE-NA9" secondAttribute="leading" constant="20" id="G2h-c5-r91"/>
+                            <constraint firstItem="IdR-nE-NA9" firstAttribute="trailing" secondItem="pL0-3b-ccv" secondAttribute="trailing" constant="20" id="Kql-FQ-eVy"/>
+                            <constraint firstItem="IdR-nE-NA9" firstAttribute="trailing" secondItem="WHd-VV-YVZ" secondAttribute="trailing" constant="20" id="OUb-Oh-Qo5"/>
+                            <constraint firstItem="WhR-ib-qWq" firstAttribute="top" secondItem="IdR-nE-NA9" secondAttribute="top" constant="50" id="Q4R-ot-tZb"/>
+                            <constraint firstItem="8ZS-QF-Dim" firstAttribute="leading" secondItem="IdR-nE-NA9" secondAttribute="leading" constant="20" id="S4O-lh-dLn"/>
+                            <constraint firstItem="pL0-3b-ccv" firstAttribute="top" secondItem="8ZS-QF-Dim" secondAttribute="bottom" constant="20" id="SRj-gr-9ZC"/>
+                            <constraint firstItem="IdR-nE-NA9" firstAttribute="trailing" secondItem="WhR-ib-qWq" secondAttribute="trailing" constant="20" id="Y1L-xf-4qB"/>
+                            <constraint firstItem="WHd-VV-YVZ" firstAttribute="top" secondItem="pL0-3b-ccv" secondAttribute="bottom" constant="20" id="sU6-XM-hse"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JDw-D8-Avh"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="WhR-ib-qWq" id="MrR-UG-Mie"/>
+                        <outlet property="valueLabel" destination="pL0-3b-ccv" id="eHX-cz-Ry3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCI-l3-2pZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696.9465648854962" y="-2.1126760563380285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZOW-RT-18i">
@@ -143,14 +231,17 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

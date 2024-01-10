@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
         userInfo = ["Rohit Gurunath Sharma is an Indian international cricketer who currently plays and captains the India national cricket team across all formats.",
                     "Virat Kohli is an Indian international cricketer and the former captain of the Indian national cricket team. He currently represents Royal Challengers Bangalore in the IPL and Delhi in domestic cricket. Kohli is widely regarded as one of the greatest batsmen in the history of cricket, and the best of 21st century",
                     "Sachin Ramesh Tendulkar, is an Indian former international cricketer who captained the Indian national team. He is widely regarded as one of the greatest batsmen in the history of cricket",
@@ -36,10 +38,6 @@ class ViewController: UIViewController {
                     "Gautam Gambhir is an Indian former international cricketer",
                     "Ravindra Jadja",
                     "Sourav Chandidas Ganguly, also known as Dada, is an Indian cricket commentator and former cricketer. "]
-    }
-    
-    func sharedKeyChainData() {
-        let keychain = keychainwr
     }
     
     
@@ -54,6 +52,7 @@ class ViewController: UIViewController {
         self.userInfoTableView.removeObserver(self, forKeyPath: "contentSize")
     }
     
+   
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize" {
             if let newValue = change?[.newKey] {
@@ -61,6 +60,10 @@ class ViewController: UIViewController {
                 self.userInfoTableViewHeightConstraint.constant = newSize.height
             }
         }
+    }
+    
+    @IBAction func nextButtonDidTap(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "keyChainVC", sender: nil)
     }
     
 }

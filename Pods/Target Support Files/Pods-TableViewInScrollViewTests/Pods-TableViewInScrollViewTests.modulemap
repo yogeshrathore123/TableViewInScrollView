@@ -1,0 +1,6 @@
+framework module Pods_TableViewInScrollViewTests {
+  umbrella header "Pods-TableViewInScrollViewTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
